@@ -1,29 +1,24 @@
-// Bakery product information
 const bakeryItems = {
     "Signature Loaf": {
         name: "Signature Loaf",
         price: "$6-$9"
     },
-
     "Butter Croissant": {
         name: "Butter Croissant",
         price: "$3-$5"
     },
-
     "Celebration Cake": {
         name: "Celebration Cake",
         price: "$30-$50"
     }
 };
 
-// Request type information
 const requestTypes = {
     preorder: "Pre-Order",
     question: "General Question"
 };
 
 
-// Update the order summary
 function updateOrderSummary() {
     const item = document.getElementById("item").value;
 
@@ -50,7 +45,6 @@ function updateOrderSummary() {
 }
 
 
-// Check the customer's name
 function validateName() {
     const name = document.getElementById("name").value.trim();
     const error = document.getElementById("nameError");
@@ -65,7 +59,6 @@ function validateName() {
 }
 
 
-// Check the customer's email
 function validateEmail() {
     const email = document.getElementById("email").value.trim();
     const error = document.getElementById("emailError");
@@ -76,8 +69,7 @@ function validateEmail() {
     }
 
     if (!email.includes("@") || !email.includes(".")) {
-        error.textContent =
-            "Please enter a valid email address.";
+        error.textContent = "Please enter a valid email address.";
         return false;
     }
 
@@ -86,14 +78,12 @@ function validateEmail() {
 }
 
 
-// Check the selected bakery item
 function validateItem() {
     const item = document.getElementById("item").value;
     const error = document.getElementById("itemError");
 
     if (item === "") {
-        error.textContent =
-            "Please select a bakery item.";
+        error.textContent = "Please select a bakery item.";
         return false;
     }
 
@@ -102,14 +92,12 @@ function validateItem() {
 }
 
 
-// Check the pickup date
 function validateDate() {
     const date = document.getElementById("date").value;
     const error = document.getElementById("dateError");
 
     if (date === "") {
-        error.textContent =
-            "Please select a pickup date.";
+        error.textContent = "Please select a pickup date.";
         return false;
     }
 
@@ -119,8 +107,7 @@ function validateDate() {
     today.setHours(0, 0, 0, 0);
 
     if (selectedDate < today) {
-        error.textContent =
-            "Pickup date cannot be in the past.";
+        error.textContent = "Pickup date cannot be in the past.";
         return false;
     }
 
@@ -129,23 +116,25 @@ function validateDate() {
 }
 
 
-// Save customer information
 function saveCustomerData() {
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
     const item = document.getElementById("item").value;
+    const requestType = document.getElementById("requestType").value;
 
     localStorage.setItem("bakeryName", name);
     localStorage.setItem("bakeryEmail", email);
     localStorage.setItem("bakeryItem", item);
+    localStorage.setItem("bakeryRequestType", requestType);
 }
 
 
-// Load saved customer information
 function loadCustomerData() {
     const savedName = localStorage.getItem("bakeryName");
     const savedEmail = localStorage.getItem("bakeryEmail");
     const savedItem = localStorage.getItem("bakeryItem");
+    const savedRequestType =
+        localStorage.getItem("bakeryRequestType");
 
     if (savedName) {
         document.getElementById("name").value = savedName;
@@ -159,34 +148,40 @@ function loadCustomerData() {
         document.getElementById("item").value = savedItem;
         updateOrderSummary();
     }
+
+    if (savedRequestType) {
+        document.getElementById("requestType").value =
+            savedRequestType;
+    }
 }
 
 
-// Listen for item selection
 document.getElementById("item").addEventListener(
     "change",
     updateOrderSummary
 );
 
 
-// Listen for form submission
 document.getElementById("bakeryForm").addEventListener(
     "submit",
     function(event) {
+
+        event.preventDefault();
 
         const nameValid = validateName();
         const emailValid = validateEmail();
         const itemValid = validateItem();
         const dateValid = validateDate();
 
+        const formMessage =
+            document.getElementById("formMessage");
+
         if (!nameValid ||
             !emailValid ||
             !itemValid ||
             !dateValid) {
 
-            event.preventDefault();
-
-            document.getElementById("formMessage").textContent =
+            formMessage.textContent =
                 "Please correct the errors above before submitting.";
 
             return;
@@ -194,13 +189,10 @@ document.getElementById("bakeryForm").addEventListener(
 
         saveCustomerData();
 
-        event.preventDefault();
-
-        document.getElementById("formMessage").textContent =
+        formMessage.textContent =
             "Thank you! Your request has been saved.";
     }
 );
 
 
-// Load saved information when the page opens
 loadCustomerData();
