@@ -44,7 +44,7 @@
         <section>
             <h2>Inquiry and Pre-Order Request</h2>
 
-            <form action="#" method="post">
+            <form id="bakeryForm" action="#" method="post">
 
                 <fieldset>
                     <legend>Customer Information</legend>
@@ -55,7 +55,9 @@
                            name="name"
                            required>
 
-                    <br><br>
+                    <p id="nameError" class="error"></p>
+
+                    <br>
 
                     <label for="email">Email Address:</label>
                     <input type="email"
@@ -63,7 +65,9 @@
                            name="email"
                            required>
 
-                    <br><br>
+                    <p id="emailError" class="error"></p>
+
+                    <br>
 
                     <label for="phone">Phone Number:</label>
                     <input type="tel"
@@ -76,17 +80,55 @@
                 <br>
 
                 <fieldset>
-                    <legend>Pre-Order Details</legend>
+                    <legend>Request Details</legend>
 
-                    <label for="item">Requested Item:</label>
-                    <input type="text"
-                           id="item"
-                           name="item"
-                           required>
+                    <label for="requestType">Request Type:</label>
+
+                    <select id="requestType"
+                            name="requestType"
+                            required>
+
+                        <option value="">Choose a request type</option>
+                        <option value="preorder">Pre-Order</option>
+                        <option value="question">General Question</option>
+
+                    </select>
 
                     <br><br>
 
+                    <label for="item">Requested Item:</label>
+
+                    <select id="item"
+                            name="item"
+                            required>
+
+                        <option value="">Choose an item</option>
+                        <option value="Signature Loaf">Signature Loaf</option>
+                        <option value="Butter Croissant">Butter Croissant</option>
+                        <option value="Celebration Cake">Celebration Cake</option>
+
+                    </select>
+
+                    <p id="itemError" class="error"></p>
+
+                    <div id="orderSummary">
+
+                        <h3>Your Request Summary</h3>
+
+                        <p id="summaryMessage">
+                            Choose an item to see details.
+                        </p>
+
+                        <p id="summaryItem"></p>
+
+                        <p id="summaryPrice"></p>
+
+                    </div>
+
+                    <br>
+
                     <label for="quantity">Quantity:</label>
+
                     <input type="number"
                            id="quantity"
                            name="quantity"
@@ -96,24 +138,41 @@
                     <br><br>
 
                     <label for="date">Requested Pickup Date:</label>
+
                     <input type="date"
                            id="date"
                            name="date"
                            required>
 
-                    <br><br>
+                    <p id="dateError" class="error"></p>
+
+                    <br>
 
                     <label for="message">Additional Information:</label>
+
                     <textarea id="message"
                               name="message"
                               rows="5"
-                              cols="30"></textarea>
+                              cols="30"
+                              placeholder="Please include item details or special requests."></textarea>
+
+                    <br><br>
+
+                    <label for="allergyNotes">Allergy Notes:</label>
+
+                    <textarea id="allergyNotes"
+                              name="allergyNotes"
+                              rows="4"
+                              cols="30"
+                              placeholder="Please list any allergies or dietary concerns, if applicable."></textarea>
 
                 </fieldset>
 
                 <br>
 
                 <button type="submit">Submit Request</button>
+
+                <p id="formMessage"></p>
 
             </form>
 
@@ -124,6 +183,8 @@
     <footer>
         <p>&copy; 2026 North Star Bakery</p>
     </footer>
+
+    <script src="js/script.js"></script>
 
 </body>
 </html>
