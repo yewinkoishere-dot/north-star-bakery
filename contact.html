@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>North Star Bakery - Contact</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Contact North Star Bakery</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <section>
+            <h2>Visit Us</h2>
+
+            <p>
+                Stop by North Star Bakery for fresh breads, pastries,
+                and cakes made with care.
+            </p>
+
+            <p>Monday - Saturday: 7:00 AM - 6:00 PM</p>
+            <p>Sunday: 8:00 AM - 2:00 PM</p>
+
+            <p>
+                We welcome local customers, families, commuters,
+                and event planners.
+            </p>
+        </section>
+
+        <section>
+            <h2>Inquiry and Pre-Order Request</h2>
+
+            <form action="#" method="post">
+
+                <fieldset>
+                    <legend>Customer Information</legend>
+
+                    <label for="name">Full Name:</label>
+                    <input type="text"
+                           id="name"
+                           name="name"
+                           required>
+
+                    <br><br>
+
+                    <label for="email">Email Address:</label>
+                    <input type="email"
+                           id="email"
+                           name="email"
+                           required>
+
+                    <br><br>
+
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel"
+                           id="phone"
+                           name="phone"
+                           required>
+
+                </fieldset>
+
+                <br>
+
+                <fieldset>
+                    <legend>Pre-Order Details</legend>
+
+                    <label for="item">Requested Item:</label>
+                    <input type="text"
+                           id="item"
+                           name="item"
+                           required>
+
+                    <br><br>
+
+                    <label for="quantity">Quantity:</label>
+                    <input type="number"
+                           id="quantity"
+                           name="quantity"
+                           min="1"
+                           required>
+
+                    <br><br>
+
+                    <label for="date">Requested Pickup Date:</label>
+                    <input type="date"
+                           id="date"
+                           name="date"
+                           required>
+
+                    <br><br>
+
+                    <label for="message">Additional Information:</label>
+                    <textarea id="message"
+                              name="message"
+                              rows="5"
+                              cols="30"></textarea>
+
+                </fieldset>
+
+                <br>
+
+                <button type="submit">Submit Request</button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 North Star Bakery</p>
+    </footer>
+
+</body>
+</html>
